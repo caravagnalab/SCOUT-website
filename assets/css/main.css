@@ -225,7 +225,7 @@ input, select, textarea {
 		display: inline-block;
 		margin-top: 15px;
 		padding: 10px 18px;
-		background-color: #2c7be5;
+		background-color: #008080ff;
 		color: white;
 		text-decoration: none;
 		font-weight: 600;
@@ -234,7 +234,7 @@ input, select, textarea {
 	}
 
 	.explore-btn:hover {
-		background-color: #1a5fcc;
+		background-color: #008080ff;
 		transform: translateY(-1px);
 	}
 
