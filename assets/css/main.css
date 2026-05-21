@@ -221,7 +221,26 @@ input, select, textarea {
 		text-transform: uppercase;
 		color: #c1cac5;
 	}
+	.explore-btn {
+		display: inline-block;
+		margin-top: 15px;
+		padding: 10px 18px;
+		background-color: #2c7be5;
+		color: white;
+		text-decoration: none;
+		font-weight: 600;
+		border-radius: 6px;
+		transition: background-color 0.2s ease, transform 0.1s ease;
+	}
 
+	.explore-btn:hover {
+		background-color: #1a5fcc;
+		transform: translateY(-1px);
+	}
+
+	.explore-btn:active {
+		transform: translateY(0px);
+	}
 /* Container */
 
 	.container {
