@@ -8,70 +8,128 @@
 
 <title>SCOUT | Development, Reproducibility & Data</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
 /* =========================================================
-   PRO-CESS INSPIRED SCIENTIFIC THEME
+   ROOT VARIABLES
 ========================================================= */
 
 :root {
 
-	--bg: #06141f;
-	--panel: rgba(12,31,45,0.78);
+	--bg: #f4f7fb;
+	--bg-secondary: #ffffff;
 
-	--text: #f5f7fb;
-	--soft: #a9bfd1;
+	--text: #111827;
+	--text-soft: #5b6475;
 
-	--primary: #00d0ff;
-	--secondary: #00f5c4;
+	--border: rgba(255,255,255,0.15);
+
+	--primary: #5b7cff;
+	--secondary: #00c2a8;
+
+	--shadow:
+		0 10px 30px rgba(0,0,0,0.08);
+
+	--hero-overlay:
+		linear-gradient(
+			135deg,
+			rgba(91,124,255,0.16),
+			rgba(0,194,168,0.12)
+		);
+
+	--glass:
+		rgba(255,255,255,0.55);
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark-mode {
+
+	--bg: #07111f;
+	--bg-secondary: #0d1727;
+
+	--text: #f3f4f6;
+	--text-soft: #9ca3af;
 
 	--border: rgba(255,255,255,0.08);
 
-	--shadow: 0 12px 35px rgba(0,0,0,0.35);
+	--shadow:
+		0 10px 35px rgba(0,0,0,0.35);
 
-	--glass: rgba(10,25,38,0.72);
-}
+	--hero-overlay:
+		linear-gradient(
+			135deg,
+			rgba(91,124,255,0.18),
+			rgba(0,194,168,0.12)
+		);
 
-/* LIGHT MODE (optional) */
-body.light-mode {
-
-	--bg: #f5f9fc;
-	--panel: rgba(255,255,255,0.85);
-
-	--text: #0b1620;
-	--soft: #4c6475;
-
-	--primary: #009ecf;
-	--secondary: #00cfa6;
-
-	--border: rgba(0,0,0,0.06);
-
-	--shadow: 0 12px 30px rgba(0,0,0,0.08);
-
-	--glass: rgba(255,255,255,0.7);
+	--glass:
+		rgba(15,23,42,0.55);
 }
 
 /* =========================================================
    GLOBAL
 ========================================================= */
 
-html { scroll-behavior: smooth; }
+html {
+	scroll-behavior: smooth;
+}
 
 body {
 
 	margin: 0;
-	font-family: Inter, sans-serif;
+
+	font-family: 'Inter', sans-serif;
 
 	background:
-		radial-gradient(circle at top left, rgba(0,208,255,0.12), transparent 30%),
-		radial-gradient(circle at top right, rgba(0,245,196,0.10), transparent 25%),
+		radial-gradient(circle at top left,
+			rgba(91,124,255,0.08),
+			transparent 30%),
+		radial-gradient(circle at bottom right,
+			rgba(0,194,168,0.08),
+			transparent 30%),
 		var(--bg);
 
 	color: var(--text);
 
 	line-height: 1.7;
+
+	transition:
+		background 0.35s ease,
+		color 0.35s ease;
+}
+
+.container {
+	width: min(1220px, 92%);
+	margin: 0 auto;
+}
+
+a {
+	color: inherit;
+}
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+#particles-js {
+
+	position: absolute;
+
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+
+	z-index: 0;
 }
 
 /* =========================================================
@@ -82,18 +140,18 @@ body {
 
 	position: sticky;
 	top: 0;
+
 	z-index: 1000;
 
-	background: rgba(6,20,31,0.75);
+	background: rgba(255,255,255,0.06);
+
 	backdrop-filter: blur(18px);
 
-	border-bottom: 1px solid var(--border);
+	border-bottom:
+		1px solid var(--border);
 }
 
 .nav-inner {
-
-	width: min(1200px, 92%);
-	margin: 0 auto;
 
 	display: flex;
 	align-items: center;
@@ -104,60 +162,98 @@ body {
 
 .logo {
 
-	font-weight: 900;
-	font-size: 1.4rem;
-	color: var(--text);
+	font-size: 1.5rem;
+	font-weight: 800;
+
 	text-decoration: none;
+
+	color: var(--text);
+
+	letter-spacing: 1px;
 }
 
 .nav-links {
 
 	display: flex;
-	gap: 1.5rem;
 	align-items: center;
+	gap: 2rem;
 }
 
 .nav-links a {
 
-	color: var(--soft);
 	text-decoration: none;
+	color: var(--text-soft);
+
 	font-weight: 600;
-	transition: 0.2s;
+
+	position: relative;
+
+	transition: all 0.25s ease;
+}
+
+.nav-links a::after {
+
+	content: "";
+
+	position: absolute;
+
+	left: 0;
+	bottom: -6px;
+
+	width: 0%;
+	height: 2px;
+
+	background:
+		linear-gradient(
+			90deg,
+			var(--primary),
+			var(--secondary)
+		);
+
+	transition: width 0.25s ease;
 }
 
 .nav-links a:hover {
 	color: var(--text);
 }
 
+.nav-links a:hover::after {
+	width: 100%;
+}
+
 /* =========================================================
-   BUTTONS
+   THEME TOGGLE
 ========================================================= */
 
-.btn {
+.theme-toggle {
 
-	padding: 0.9rem 1.4rem;
-	border-radius: 999px;
-	text-decoration: none;
-	font-weight: 700;
-	display: inline-block;
-	transition: 0.25s;
-}
+	background: var(--bg-secondary);
 
-.btn-primary {
-
-	background: linear-gradient(90deg, var(--primary), var(--secondary));
-	color: #021018;
-}
-
-.btn-primary:hover {
-	transform: translateY(-2px);
-}
-
-.btn-secondary {
-
-	background: rgba(255,255,255,0.04);
 	border: 1px solid var(--border);
+
+	width: 48px;
+	height: 48px;
+
+	border-radius: 50%;
+
+	cursor: pointer;
+
 	color: var(--text);
+
+	font-size: 1rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	transition: all 0.25s ease;
+}
+
+.theme-toggle:hover {
+
+	transform: translateY(-2px);
+
+	box-shadow: var(--shadow);
 }
 
 /* =========================================================
@@ -167,167 +263,416 @@ body {
 .hero {
 
 	position: relative;
-	padding: 7rem 0;
-	text-align: center;
 	overflow: hidden;
+
+	padding:
+		8rem 0
+		7rem;
+
+	text-align: center;
 }
 
-#particles-js {
+.hero::before {
+
+	content: "";
 
 	position: absolute;
 	inset: 0;
-	z-index: 0;
+
+	background: var(--hero-overlay);
+
+	z-index: 1;
 }
 
 .hero-content {
 
 	position: relative;
 	z-index: 2;
-	width: min(900px, 92%);
-	margin: auto;
+}
+
+.hero-badge {
+
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+
+	padding:
+		0.65rem
+		1.1rem;
+
+	border-radius: 999px;
+
+	background: var(--glass);
+
+	backdrop-filter: blur(10px);
+
+	border: 1px solid var(--border);
+
+	font-size: 0.9rem;
+	font-weight: 600;
+
+	margin-bottom: 2rem;
 }
 
 .hero h1 {
 
-	font-size: 4.5rem;
+	font-size: clamp(3rem, 8vw, 6rem);
+
+	line-height: 1;
+
+	margin-bottom: 1.5rem;
+
 	font-weight: 900;
-	letter-spacing: -2px;
-	margin: 0;
+
+	letter-spacing: -4px;
 }
 
-.hero span {
+.hero-gradient {
 
-	background: linear-gradient(90deg, var(--primary), var(--secondary));
+	background:
+		linear-gradient(
+			90deg,
+			var(--primary),
+			var(--secondary)
+		);
+
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
 .hero p {
 
-	color: var(--soft);
-	margin-top: 1.5rem;
-	font-size: 1.15rem;
+	max-width: 900px;
+
+	margin: 0 auto;
+
+	font-size: 1.2rem;
+	color: var(--text-soft);
+
+	line-height: 1.9;
 }
 
-/* =========================================================
-   SECTION LAYOUT
-========================================================= */
+.hero-buttons {
 
-section {
+	margin-top: 2.5rem;
 
-	padding: 5rem 0;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+
+	flex-wrap: wrap;
 }
 
-.container {
+.btn {
 
-	width: min(1200px, 92%);
-	margin: auto;
+	padding:
+		1rem 1.7rem;
+
+	border-radius: 999px;
+
+	text-decoration: none;
+
+	font-weight: 700;
+
+	transition: all 0.25s ease;
 }
 
-/* =========================================================
-   GLASS CARD SYSTEM (UNIFIED LOOK)
-========================================================= */
+.btn-primary {
 
-.card {
+	background:
+		linear-gradient(
+			90deg,
+			var(--primary),
+			var(--secondary)
+		);
 
-	background: var(--panel);
+	color: white;
+
+	box-shadow:
+		0 12px 25px rgba(91,124,255,0.35);
+}
+
+.btn-primary:hover {
+
+	transform:
+		translateY(-3px)
+		scale(1.02);
+}
+
+.btn-secondary {
+
+	background: var(--glass);
+
+	backdrop-filter: blur(12px);
+
 	border: 1px solid var(--border);
-	border-radius: 24px;
-	padding: 2.5rem;
-	box-shadow: var(--shadow);
-	backdrop-filter: blur(14px);
+
+	color: var(--text);
+}
+
+.btn-secondary:hover {
+
+	transform:
+		translateY(-3px);
 }
 
 /* =========================================================
-   SECTION HEADER
+   SECTIONS
 ========================================================= */
 
-.section-title {
+.main-section {
+	padding: 6rem 0;
+}
 
-	font-size: 2.2rem;
+.section-header {
+
+	text-align: center;
+
+	margin-bottom: 3rem;
+}
+
+.section-header h2 {
+
+	font-size: 2.5rem;
+	font-weight: 800;
+
+	margin-bottom: 1rem;
+}
+
+.section-header p {
+
+	max-width: 850px;
+
+	margin: 0 auto;
+
+	color: var(--text-soft);
+
+	font-size: 1.05rem;
+}
+
+/* =========================================================
+   STATS GRID
+========================================================= */
+
+.stats-grid {
+
+	display: grid;
+
+	grid-template-columns:
+		repeat(auto-fit, minmax(240px, 1fr));
+
+	gap: 1.5rem;
+}
+
+.stat-card {
+
+	position: relative;
+	overflow: hidden;
+
+	padding: 2rem;
+
+	border-radius: 24px;
+
+	background: var(--bg-secondary);
+
+	border:
+		1px solid var(--border);
+
+	transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+
+	transform:
+		translateY(-8px);
+
+	box-shadow:
+		0 18px 35px rgba(0,0,0,0.12);
+}
+
+.stat-card::before {
+
+	content: "";
+
+	position: absolute;
+
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 5px;
+
+	background:
+		linear-gradient(
+			90deg,
+			var(--primary),
+			var(--secondary)
+		);
+}
+
+.stat-number {
+
+	font-size: 3rem;
 	font-weight: 900;
 
-	margin-bottom: 0.5rem;
+	margin-bottom: 0.8rem;
 
-	background: linear-gradient(90deg, var(--primary), var(--secondary));
+	background:
+		linear-gradient(
+			90deg,
+			var(--primary),
+			var(--secondary)
+		);
+
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
-.section-desc {
+.stat-title {
 
-	color: var(--soft);
-	margin-bottom: 2rem;
+	font-size: 1.1rem;
+	font-weight: 700;
+
+	margin-bottom: 0.6rem;
+}
+
+.stat-desc {
+	color: var(--text-soft);
 }
 
 /* =========================================================
-   GRID SYSTEM
+   CONTENT GRID
 ========================================================= */
 
-.grid {
+.logo-grid {
 
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-	gap: 1.5rem;
+
+	grid-template-columns:
+		repeat(auto-fit, minmax(260px, 1fr));
+
+	gap: 2rem;
 }
 
-/* =========================================================
-   STAT CARDS
-========================================================= */
+.logo-item {
 
-.stat {
+	background: var(--bg-secondary);
+
+	border:
+		1px solid var(--border);
+
+	border-radius: 24px;
 
 	padding: 2rem;
-	border-radius: 20px;
-	background: var(--panel);
-	border: 1px solid var(--border);
+
 	text-align: center;
+
+	transition: all 0.3s ease;
 }
 
-.stat h3 {
+.logo-item:hover {
 
-	font-size: 2.2rem;
-	margin: 0;
-	color: var(--primary);
+	transform:
+		translateY(-8px);
+
+	box-shadow:
+		0 20px 35px rgba(0,0,0,0.12);
 }
 
-/* =========================================================
-   ITEM CARDS
-========================================================= */
+.logo-item a {
 
-.item {
-
-	padding: 2rem;
-	border-radius: 20px;
-	background: var(--panel);
-	border: 1px solid var(--border);
-	transition: 0.25s;
-	text-align: center;
+	text-decoration: none;
+	color: inherit;
 }
 
-.item:hover {
-	transform: translateY(-5px);
-}
+.logo-item img {
 
-.item img {
-	width: 120px;
-	height: 80px;
+	width: 100%;
+	max-width: 140px;
+
+	height: 100px;
+
 	object-fit: contain;
+
 	margin-bottom: 1rem;
+}
+
+.logo-item h3 {
+
+	font-size: 1.2rem;
+
+	margin-bottom: 0.7rem;
+}
+
+.logo-item p {
+
+	color: var(--text-soft);
 }
 
 /* =========================================================
    PUBLICATION
 ========================================================= */
 
-pre {
+.publication-card {
 
-	background: rgba(255,255,255,0.04);
+	padding: 3rem;
+
+	border-radius: 28px;
+
+	background:
+		linear-gradient(
+			135deg,
+			rgba(91,124,255,0.12),
+			rgba(0,194,168,0.08)
+		);
+
+	border:
+		1px solid var(--border);
+
+	backdrop-filter: blur(18px);
+
+	box-shadow: var(--shadow);
+
+	text-align: center;
+}
+
+.publication-card h3 {
+
+	font-size: 2rem;
+
+	margin-bottom: 1rem;
+}
+
+.publication-card p {
+
+	max-width: 850px;
+
+	margin:
+		0 auto
+		2rem;
+
+	color: var(--text-soft);
+}
+
+.citation-box {
+
+	text-align: left;
+
+	background: rgba(0,0,0,0.04);
+
 	padding: 1.5rem;
-	border-radius: 16px;
-	border: 1px solid var(--border);
+
+	border-radius: 18px;
+
+	font-family: monospace;
+
+	font-size: 0.95rem;
+
 	overflow-x: auto;
-	color: var(--soft);
+}
+
+body.dark-mode .citation-box {
+	background: rgba(255,255,255,0.04);
 }
 
 /* =========================================================
@@ -336,9 +681,38 @@ pre {
 
 footer {
 
+	padding:
+		4rem 0;
+
 	text-align: center;
-	padding: 3rem 0;
-	color: var(--soft);
+
+	color: var(--text-soft);
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+	.nav-inner {
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.nav-links {
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.hero {
+		padding-top: 6rem;
+	}
+
+	.hero p {
+		font-size: 1.05rem;
+	}
 }
 
 </style>
@@ -348,25 +722,34 @@ footer {
 <body>
 
 <!-- =========================================================
-   NAVBAR
+     NAVBAR
 ========================================================= -->
 
 <nav id="navbar">
 
-	<div class="nav-inner">
+	<div class="container nav-inner">
 
-		<a class="logo" href="#top">SCOUT</a>
+		<a href="#top" class="logo">
+			SCOUT
+		</a>
 
 		<div class="nav-links">
 
 			<a href="#overview">Overview</a>
-			<a href="#software">Software</a>
-			<a href="#repro">Reproducibility</a>
-			<a href="#data">Data</a>
-			<a href="#pub">Citation</a>
 
-			<button class="btn btn-secondary" id="theme">
+			<a href="#software">Software</a>
+
+			<a href="#reproducibility">Reproducibility</a>
+
+			<a href="#data">Data</a>
+
+			<a href="#publication">Publication</a>
+
+			<button class="theme-toggle"
+					id="theme-toggle">
+
 				🌙
+
 			</button>
 
 		</div>
@@ -376,227 +759,536 @@ footer {
 </nav>
 
 <!-- =========================================================
-   HERO + PARTICLES
+     HERO
 ========================================================= -->
 
 <section class="hero" id="top">
 
-<div id="particles-js"></div>
+	<div id="particles-js"></div>
 
-<div class="hero-content">
+	<div class="container hero-content">
 
-	<h1><span>SCOUT</span></h1>
-
-	<p>
-		Synthetic Cohort of Universal Tumours for reproducible cancer
-		genomics benchmarking and tool evaluation.
-	</p>
-
-	<div style="margin-top:2rem;">
-
-		<a class="btn btn-primary" href="#overview">Explore</a>
-		<a class="btn btn-secondary" href="#pub">Citation</a>
-
-	</div>
-
-</div>
-
-</section>
-
-<!-- =========================================================
-   OVERVIEW
-========================================================= -->
-
-<section id="overview">
-
-<div class="container card">
-
-	<h2 class="section-title">Overview</h2>
-
-	<p class="section-desc">
-		SCOUT provides a controlled benchmarking framework for
-		cancer genome analysis tools.
-	</p>
-
-	<div class="grid">
-
-		<div class="stat">
-			<h3>7</h3>
-			<p>Tumour models</p>
+		<div class="hero-badge">
+			● Synthetic Whole-Genome Sequencing Cohort
 		</div>
 
-		<div class="stat">
-			<h3>XX TB</h3>
-			<p>Sequencing data</p>
-		</div>
+		<h1>
+			<span class="hero-gradient">SCOUT</span>
+		</h1>
 
-		<div class="stat">
-			<h3>XX+</h3>
-			<p>Tools benchmarked</p>
-		</div>
+		<p>
+			A next-generation synthetic cancer genomics benchmark
+			for reproducible tumour evolution analysis,
+			whole-genome sequencing validation,
+			and scalable bioinformatics workflow benchmarking.
+		</p>
 
-		<div class="stat">
-			<h3>XX</h3>
-			<p>Purity/coverage setups</p>
+		<div class="hero-buttons">
+
+			<a href="https://caravagnalab.github.io/SCOUT/articles/scout_cohort.html"
+			   target="_blank"
+			   rel="noopener noreferrer"
+			   class="btn btn-primary">
+
+				Explore Cohort
+
+			</a>
+
+			<a href="#publication"
+			   class="btn btn-secondary">
+
+				View Publication
+
+			</a>
+
 		</div>
 
 	</div>
 
-</div>
-
 </section>
 
 <!-- =========================================================
-   SOFTWARE
+     OVERVIEW
 ========================================================= -->
 
-<section id="software">
+<section class="main-section" id="overview">
 
-<div class="container card">
+	<div class="container">
 
-	<h2 class="section-title">Software</h2>
+		<div class="section-header">
 
-	<div class="grid">
+			<h2>SCOUT at a glance</h2>
 
-		<div class="item">
-			<img src="images/process_logo.png">
-			<p>ProCESS simulation framework</p>
+			<p>
+				A large-scale synthetic benchmarking resource for
+				reproducible cancer genomics analyses,
+				tumour evolution studies,
+				and workflow validation.
+			</p>
+
 		</div>
 
-		<div class="item">
-			<img src="images/sarek_logo.png">
-			<p>nf-core/sarek pipeline</p>
-		</div>
+		<div class="stats-grid">
 
-		<div class="item">
-			<img src="images/tumourevo_logo.png">
-			<p>nf-core/tumourevo</p>
+			<div class="stat-card">
+
+				<div class="stat-number">7</div>
+
+				<div class="stat-title">
+					Tumour Models
+				</div>
+
+				<div class="stat-desc">
+					Matched tumour-normal WGS models.
+				</div>
+
+			</div>
+
+			<div class="stat-card">
+
+				<div class="stat-number">XX TB</div>
+
+				<div class="stat-title">
+					Sequencing Data
+				</div>
+
+				<div class="stat-desc">
+					Raw and processed datasets.
+				</div>
+
+			</div>
+
+			<div class="stat-card">
+
+				<div class="stat-number">XX+</div>
+
+				<div class="stat-title">
+					Tools Benchmarked
+				</div>
+
+				<div class="stat-desc">
+					Somatic, CNV and phylogenetic tools.
+				</div>
+
+			</div>
+
+			<div class="stat-card">
+
+				<div class="stat-number">XX</div>
+
+				<div class="stat-title">
+					Purity/Coverage Conditions
+				</div>
+
+				<div class="stat-desc">
+					Benchmark combinations across sequencing settings.
+				</div>
+
+			</div>
+
 		</div>
 
 	</div>
 
-</div>
-
 </section>
 
 <!-- =========================================================
-   REPRODUCIBILITY
+     SOFTWARE
 ========================================================= -->
 
-<section id="repro">
+<section class="main-section" id="software">
 
-<div class="container card">
+	<div class="container">
 
-	<h2 class="section-title">Reproducibility</h2>
+		<div class="section-header">
 
-	<div class="grid">
+			<h2>Software & Pipelines</h2>
 
-		<div class="item">
-			<img src="images/scout_logo.png">
-			<p>SCOUT package</p>
+			<p>
+				Software tools and analytical workflows used
+				to generate and analyse the SCOUT cohort.
+			</p>
+
 		</div>
 
-		<div class="item">
-			<img src="images/github_logo.png">
-			<p>Reproducibility repo</p>
-		</div>
+		<div class="logo-grid">
 
-		<div class="item">
-			<img src="images/docker_logo.png">
-			<p>Docker containers</p>
+			<div class="logo-item">
+
+				<a href="https://caravagnalab.github.io/ProCESS/"
+				   target="_blank">
+
+					<img src="images/process_logo.png"
+						 alt="ProCESS Logo">
+
+					<h3>ProCESS</h3>
+
+					<p>
+						Simulation framework for clonal evolution
+						and Illumina paired-end sequencing.
+					</p>
+
+				</a>
+
+			</div>
+
+			<div class="logo-item">
+
+				<a href="https://nf-co.re/sarek/3.5.1"
+				   target="_blank">
+
+					<img src="images/sarek_logo.png"
+						 alt="sarek Logo">
+
+					<h3>nf-core/sarek</h3>
+
+					<p>
+						Alignment, preprocessing,
+						somatic and copy-number variant calling.
+					</p>
+
+				</a>
+
+			</div>
+
+			<div class="logo-item">
+
+				<a href="https://nf-co.re/tumourevo"
+				   target="_blank">
+
+					<img src="images/tumourevo_logo.png"
+						 alt="tumourevo Logo">
+
+					<h3>nf-core/tumourevo</h3>
+
+					<p>
+						Tumour evolution and phylogenetic workflows.
+					</p>
+
+				</a>
+
+			</div>
+
 		</div>
 
 	</div>
 
-</div>
-
 </section>
 
 <!-- =========================================================
-   DATA
+     REPRODUCIBILITY
 ========================================================= -->
 
-<section id="data">
+<section class="main-section" id="reproducibility">
 
-<div class="container card">
+	<div class="container">
 
-	<h2 class="section-title">Data</h2>
+		<div class="section-header">
 
-	<div class="grid">
+			<h2>Reproducibility</h2>
 
-		<div class="item">
-			<img src="images/ena_logo.png">
-			<p>ENA raw data</p>
+			<p>
+				Resources and containers for fully reproducible analyses.
+			</p>
+
 		</div>
 
-		<div class="item">
-			<img src="images/zenodo_logo.png">
-			<p>Zenodo datasets</p>
+		<div class="logo-grid">
+
+			<div class="logo-item">
+
+				<a href="https://caravagnalab.github.io/SCOUT/"
+				   target="_blank">
+
+					<img src="images/scout_logo.png"
+						 alt="SCOUT Logo">
+
+					<h3>SCOUT Package</h3>
+
+					<p>
+						Reproducible software package
+						and analysis toolkit.
+					</p>
+
+				</a>
+
+			</div>
+
+			<div class="logo-item">
+
+				<a href="https://github.com/caravagnalab/process_reproducibility"
+				   target="_blank">
+
+					<img src="images/github_logo.png"
+						 alt="GitHub Logo">
+
+					<h3>Reproducibility Repository</h3>
+
+					<p>
+						Source code, workflows and benchmarking scripts.
+					</p>
+
+				</a>
+
+			</div>
+
+			<div class="logo-item">
+
+				<a href="https://hub.docker.com/r/lvaleriani/process"
+				   target="_blank">
+
+					<img src="images/docker_logo.png"
+						 alt="Docker Logo">
+
+					<h3>ProCESS Container</h3>
+
+					<p>
+						Containerised reproducible environments.
+					</p>
+
+				</a>
+
+			</div>
+
 		</div>
 
 	</div>
 
-</div>
+</section>
+
+<!-- =========================================================
+     DATA
+========================================================= -->
+
+<section class="main-section" id="data">
+
+	<div class="container">
+
+		<div class="section-header">
+
+			<h2>Data Resources</h2>
+
+			<p>
+				Public repositories containing raw sequencing data,
+				processed outputs and reproducibility datasets.
+			</p>
+
+		</div>
+
+		<div class="logo-grid">
+
+			<div class="logo-item">
+
+				<a href="https://www.ebi.ac.uk/ena/browser/home"
+				   target="_blank">
+
+					<img src="images/ena_logo.png"
+						 alt="ENA Logo">
+
+					<h3>European Nucleotide Archive</h3>
+
+					<p>
+						Public access to raw sequencing data.
+					</p>
+
+				</a>
+
+			</div>
+
+			<div class="logo-item">
+
+				<a href="https://zenodo.org/"
+				   target="_blank">
+
+					<img src="images/zenodo_logo.png"
+						 alt="Zenodo Logo">
+
+					<h3>Zenodo</h3>
+
+					<p>
+						Processed datasets and reproducibility outputs.
+					</p>
+
+				</a>
+
+			</div>
+
+		</div>
+
+	</div>
 
 </section>
 
 <!-- =========================================================
-   PUBLICATION
+     PUBLICATION
 ========================================================= -->
 
-<section id="pub">
+<section class="main-section" id="publication">
 
-<div class="container card">
+	<div class="container">
 
-	<h2 class="section-title">Citation</h2>
+		<div class="publication-card">
 
-	<pre>
+			<h3>Publication & Citation</h3>
+
+			<p>
+				If you use SCOUT in your research,
+				please cite the associated publication and resources.
+			</p>
+
+			<div class="citation-box">
+
 @article{SCOUT2026,
- title = {SCOUT: Synthetic WGS cohort for benchmarking},
- author = {TODO},
- year = {2026}
+  title   = {SCOUT: A synthetic whole-genome sequencing cohort for reproducible cancer genomics benchmarking},
+  author  = {AUTHOR NAMES},
+  journal = {Journal Name},
+  year    = {2026},
+  doi     = {DOI HERE}
 }
-	</pre>
 
-</div>
+			</div>
+
+			<div class="hero-buttons">
+
+				<a href="#"
+				   class="btn btn-primary">
+
+					Read Publication
+
+				</a>
+
+				<a href="#"
+				   class="btn btn-secondary">
+
+					Download Citation
+
+				</a>
+
+			</div>
+
+		</div>
+
+	</div>
 
 </section>
 
 <!-- =========================================================
-   FOOTER
+     FOOTER
 ========================================================= -->
 
 <footer>
-	© SCOUT Project
+
+	<div class="container">
+
+		<p>
+			© SCOUT Project — Reproducible cancer genomics infrastructure
+		</p>
+
+	</div>
+
 </footer>
 
 <!-- =========================================================
-   SCRIPTS
+     PARTICLES.JS
 ========================================================= -->
 
 <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 <script>
 
-/* DARK MODE */
-document.getElementById("theme").onclick = () => {
-	document.body.classList.toggle("light-mode");
-};
+/* =========================================================
+   DARK MODE
+========================================================= */
 
-/* PARTICLES */
-particlesJS("particles-js", {
+const toggle = document.getElementById('theme-toggle');
+
+toggle.addEventListener('click', () => {
+
+	document.body.classList.toggle('dark-mode');
+
+	if(document.body.classList.contains('dark-mode')) {
+		toggle.innerHTML = '☀️';
+	}
+	else {
+		toggle.innerHTML = '🌙';
+	}
+});
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+particlesJS('particles-js', {
+
 	particles: {
-		number: { value: 60 },
-		color: { value: "#00d0ff" },
-		opacity: { value: 0.2 },
-		size: { value: 3 },
+
+		number: {
+			value: 70
+		},
+
+		color: {
+			value: '#5b7cff'
+		},
+
+		shape: {
+			type: 'circle'
+		},
+
+		opacity: {
+			value: 0.25
+		},
+
+		size: {
+			value: 3
+		},
+
 		line_linked: {
 			enable: true,
-			color: "#00f5c4",
-			opacity: 0.15
+			distance: 140,
+			color: '#5b7cff',
+			opacity: 0.18,
+			width: 1
 		},
-		move: { enable: true, speed: 1.2 }
-	}
+
+		move: {
+			enable: true,
+			speed: 1.5
+		}
+	},
+
+	interactivity: {
+
+		detect_on: 'canvas',
+
+		events: {
+
+			onhover: {
+				enable: true,
+				mode: 'grab'
+			},
+
+			onclick: {
+				enable: true,
+				mode: 'push'
+			}
+		},
+
+		modes: {
+
+			grab: {
+				distance: 150,
+				line_linked: {
+					opacity: 0.4
+				}
+			},
+
+			push: {
+				particles_nb: 4
+			}
+		}
+	},
+
+	retina_detect: true
 });
 
 </script>
