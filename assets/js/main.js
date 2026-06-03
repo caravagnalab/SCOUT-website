@@ -1,74 +1,88 @@
-/*
-	TXT by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+// js/main.js
 
-(function($) {
+const toggle = document.getElementById('theme-toggle');
 
-	var	$window = $(window),
-		$body = $('body'),
-		$nav = $('#nav');
+toggle.addEventListener('click', () => {
 
-	// Breakpoints.
-		breakpoints({
-			xlarge:  [ '1281px',  '1680px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ '361px',   '736px'  ],
-			xsmall:  [ null,      '360px'  ]
-		});
+	document.body.classList.toggle('dark-mode');
 
-	// Play initial animations on page load.
-		$window.on('load', function() {
-			window.setTimeout(function() {
-				$body.removeClass('is-preload');
-			}, 100);
-		});
+	if(document.body.classList.contains('dark-mode')) {
+		toggle.innerHTML = '☀️';
+	}
+	else {
+		toggle.innerHTML = '🌙';
+	}
+});
 
-	// Dropdowns.
-		$('#nav > ul').dropotron({
-			mode: 'fade',
-			noOpenerFade: true,
-			speed: 300,
-			alignment: 'center'
-		});
+particlesJS('particles-js', {
 
-	// Scrolly
-		$('.scrolly').scrolly({
-			speed: 1000,
-			offset: function() { return $nav.height() - 5; }
-		});
+	particles: {
 
-	// Nav.
+		number: {
+			value: 70
+		},
 
-		// Title Bar.
-			$(
-				'<div id="titleBar">' +
-					'<a href="#navPanel" class="toggle"></a>' +
-					'<span class="title">' + $('#logo').html() + '</span>' +
-				'</div>'
-			)
-				.appendTo($body);
+		color: {
+			value: '#5b7cff'
+		},
 
-		// Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'left',
-					target: $body,
-					visibleClass: 'navPanel-visible'
-				});
+		shape: {
+			type: 'circle'
+		},
 
-})(jQuery);
+		opacity: {
+			value: 0.25
+		},
+
+		size: {
+			value: 3
+		},
+
+		line_linked: {
+			enable: true,
+			distance: 140,
+			color: '#5b7cff',
+			opacity: 0.18,
+			width: 1
+		},
+
+		move: {
+			enable: true,
+			speed: 1.5
+		}
+	},
+
+	interactivity: {
+
+		detect_on: 'canvas',
+
+		events: {
+
+			onhover: {
+				enable: true,
+				mode: 'grab'
+			},
+
+			onclick: {
+				enable: true,
+				mode: 'push'
+			}
+		},
+
+		modes: {
+
+			grab: {
+				distance: 150,
+				line_linked: {
+					opacity: 0.4
+				}
+			},
+
+			push: {
+				particles_nb: 4
+			}
+		}
+	},
+
+	retina_detect: true
+});
