@@ -700,6 +700,221 @@ body.dark-mode .citation-box {
     background: rgba(255,255,255,0.04);
 }
 
+/* =========================================================
+PUBLICATIONS
+========================================================= */
+
+.publication-list {
+
+
+max-width: 1100px;
+margin: 0 auto;
+
+display: flex;
+flex-direction: column;
+gap: 1.75rem;
+
+
+}
+
+.publication-item {
+
+
+position: relative;
+
+padding: 2.25rem;
+
+border-radius: 24px;
+
+background: var(--bg-secondary);
+
+border: 1px solid var(--border);
+
+box-shadow: var(--shadow);
+
+transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+overflow: hidden;
+
+}
+
+.publication-item::before {
+
+
+content: "";
+
+position: absolute;
+
+top: 0;
+left: 0;
+
+width: 5px;
+height: 100%;
+
+background:
+    linear-gradient(
+        180deg,
+        var(--primary),
+        var(--secondary)
+    );
+
+
+}
+
+.publication-item:hover {
+
+
+transform: translateY(-6px);
+
+box-shadow:
+    0 20px 40px rgba(0,0,0,0.12);
+
+
+}
+
+.publication-meta {
+
+
+display: flex;
+align-items: center;
+gap: 0.75rem;
+
+margin-bottom: 1rem;
+
+
+}
+
+.publication-meta span {
+
+padding: 0.35rem 0.9rem;
+
+border-radius: 999px;
+
+background: var(--glass);
+
+backdrop-filter: blur(10px);
+
+border: 1px solid var(--border);
+
+font-size: 0.82rem;
+font-weight: 700;
+
+color: var(--text-soft);
+
+
+}
+
+.publication-item h3 {
+
+
+margin: 0 0 1rem;
+
+font-size: 1.55rem;
+font-weight: 800;
+
+line-height: 1.35;
+
+color: var(--text);
+
+
+}
+
+.publication-item .authors {
+
+
+margin-bottom: 0.9rem;
+
+color: var(--text-soft);
+
+font-size: 0.98rem;
+
+line-height: 1.8;
+
+
+}
+
+.publication-item .journal {
+
+
+margin-bottom: 1.75rem;
+
+font-size: 1rem;
+
+font-weight: 600;
+
+color: var(--text);
+
+
+}
+
+.publication-actions {
+
+
+display: flex;
+flex-wrap: wrap;
+gap: 0.8rem;
+
+
+}
+
+.publication-actions .btn {
+
+
+padding:
+    0.85rem
+    1.4rem;
+
+
+}
+
+/* Optional DOI styling */
+
+.doi-link {
+
+
+color: var(--primary);
+
+text-decoration: none;
+
+font-weight: 600;
+
+
+}
+
+.doi-link:hover {
+
+
+text-decoration: underline;
+
+
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+
+.publication-item {
+
+    padding: 1.75rem;
+}
+
+.publication-item h3 {
+
+    font-size: 1.25rem;
+}
+
+.publication-meta {
+
+    flex-wrap: wrap;
+}
+
+}
+
+
 /* .publication-card {
 
 	padding: 3rem;
