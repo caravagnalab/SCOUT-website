@@ -177,10 +177,10 @@
 
 			<div class="stat-card">
 
-				<div class="stat-number">13+</div>
+				<div class="stat-number">13</div>
 
 				<div class="stat-title">
-					Tools Benchmarked
+					Bioinformatics tools benchmarked
 				</div>
 
 				<div class="stat-desc">
@@ -498,12 +498,9 @@
 				<div class="stat-title">ProCESS</div>
 
 				<div class="stat-desc">
-					We generated SCOUT using ProCESS (Programmable Cancer Evolution Spatial Simulator), a framework that integrates spatial tumour evolution with 
-					synthetic whole-genome sequencing. Starting from 1000 Genomes germline references, 
-					it models clonal expansion, mutational processes, treatment dynamics, and sequencing noise to preserve 
-					full evolutionary ground truth from origin to FASTQ generation. Using this system, we constructed seven tumour prototypes 
-					spanning solid and haematological cancers under longitudinal, spatial, and treatment-driven scenarios, 
-					capturing key patterns such as polyclonality, clonal sweeps, and resistance evolution.
+					We generated SCOUT using ProCESS (Programmable Cancer Evolution Spatial Simulator), a framework that integrates spatial tumour evolution with synthetic whole-genome sequencing.
+					Within this framework,we constructed seven tumour prototypes in SCOUT, designed to reflect the characteristic evolutionary trajectories and
+					biological heterogeneity of their corresponding cancer types. 
 				</div>
 
 			</div>
@@ -536,11 +533,9 @@
 				<div class="stat-title">nf-core/sarek</div>
 
 				<div class="stat-desc">
-						We benchmarked tumour–normal whole-genome sequencing workflows using nf-core/sarek, a community-maintained pipeline for somatic and germline variant detection built on GATK. 
-						Across controlled combinations of tumour purity, sequencing depth, and clonal structure, we evaluated the accuracy of SNV, 
-						indel, and copy-number calling under realistic evolutionary scenarios. 
-						This setup enables systematic assessment of how tumour evolutionary complexity propagates 
-						through alignment, preprocessing, and variant inference in standard WGS analysis workflows.
+						We benchmarked somatic and germline variant calling, as well as copy-number detection methods, for tumour–normal whole-genome sequencing using nf-core/sarek.
+						Across controlled combinations of tumour purity, sequencing depth, and genomic profiles, we evaluated the accuracy of SNV and indel detection, 
+						copy-number segmentation, and ploidy inference, alongside tumour purity estimation, using ProCESS-derived ground-truth genomic profiles.
 				</div>
 
 			</div>
@@ -573,9 +568,10 @@
 				<div class="stat-title">nf-core/tumourevo</div>
 
 				<div class="stat-desc">
-					We benchmarked tumour evolution inference using nf-core/tumourevo, a dedicated nf-core pipeline for analysing bulk whole-genome sequencing data. 
-					Across controlled evolutionary scenarios generated in SCOUT, we evaluated the accuracy of driver annotation, mutational signature analysis, and subclonal reconstruction. 
-					This framework enables systematic assessment of how evolutionary history is inferred from bulk sequencing data under varying tumour purity, clonal complexity, and sequencing depth.
+					We benchmarked tumour evolution inference methods using nf-core/tumourevo, focusing on driver mutation detection, subclonal deconvolution in both single-sample and 
+					multi-sample settings, and mutational signature analysis. Across ProCESS-generated ground-truth evolutionary scenarios, 
+					we evaluated the accuracy of reconstructed clonal architectures and mutational processes, providing a comprehensive assessment 
+					of downstream genomic interpretation of tumour evolution.
 				</div>
 
 			</div>
@@ -634,7 +630,6 @@
 				<div class="stat-desc">
 					A public GitHub repository containing all scripts required to reproduce the analyses presented in the SCOUT study,
 					including data processing workflows, benchmarking procedures, and figure generation. 
-</div>
 				</div>
 
 			</div>
