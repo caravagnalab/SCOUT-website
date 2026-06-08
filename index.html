@@ -139,7 +139,7 @@
 
 				<div class="stat-desc">
 					Matched tumour–normal whole-genome sequencing (WGS) samples spanning diverse biological and technical conditions,
-					including multiple tumour types, multiregion and longitudinal sampling, 
+					including multiple tumour types, <b>multiregion</b> and <b>longitudinal</b> sampling, 
 					and systematically varied tumour purity and sequencing depth.
 				</div>
 
@@ -154,9 +154,7 @@
 				</div>
 
 				<div class="stat-desc">
-					Comprehensive characterization of seven tumour types, including five solid cancers and two haematological malignancies. 
-					These models capture key clinical and molecular diversity across cancer types, 
-					incorporating tumour-specific driver landscapes, mutational processes, and evolutionary dynamics representative of typical disease scenarios observed in clinical oncology.
+					Comprehensive characterization of seven tumour types, including five <b>solid</b> cancers and two <b>haematological malignancies</b>. 
 				</div>
 
 			</div>
@@ -170,8 +168,8 @@
 				</div>
 
 				<div class="stat-desc">
-					Synthetic paired-end FASTQ datasets generated to emulate Illumina NovaSeq 6000 sequencing,
-					including 150 bp reads, realistic base-calling quality profiles, 
+					Synthetic paired-end FASTQ datasets generated to emulate <b>Illumina NovaSeq 6000</b> sequencing,
+					including <b>150 bp</b> reads, realistic base-calling quality profiles, 
 					and empirically calibrated sequencing error models that reflect modern short-read sequencing platforms.
 				</div>
 
@@ -297,7 +295,7 @@
 </section>
 
 <!-- WHY SCOUT -->
-<section class="main-section" id="why-scout">
+<!-- <section class="main-section" id="why-scout">
 
 	<div class="container">
 
@@ -350,6 +348,57 @@
 
 
 	</div>
+</section> -->
+
+<section class="main-section" id="why-scout">
+
+	<div class="container">
+
+		<div class="section-header">
+
+			<h2>Why SCOUT matters</h2>
+
+			<p>
+				SCOUT is designed to reflect the structured, multi-layered complexity of cancer evolution,
+				enabling benchmarking under realistic biological, technical, and evolutionary constraints rather than isolated perturbations.
+			</p>
+
+		</div>
+
+		<div class="stats-grid">
+
+			<div class="stat-card">
+				<div class="stat-title">Cancer genomes are interconnected systems</div>
+				<div class="stat-desc">
+					Genomic signals such as variant allele frequencies, copy-number states, mutational signatures, and phylogenetic structure arise jointly from shared evolutionary processes, producing correlated patterns across multiple molecular layers.
+				</div>
+			</div>
+
+			<div class="stat-card">
+				<div class="stat-title">Beyond synthetic spike-ins</div>
+				<div class="stat-desc">
+					SCOUT replaces simplified perturbation benchmarks with explicit evolutionary ground truth, capturing tumour growth, subclonal diversification, and treatment-driven selection in a unified simulation framework.
+				</div>
+			</div>
+
+			<div class="stat-card">
+				<div class="stat-title">Clinical realism in WGS analysis</div>
+				<div class="stat-desc">
+					The framework reproduces realistic whole-genome sequencing conditions, including variable purity, sequencing depth, and tumour heterogeneity, supporting robust evaluation of cancer genomics methods in clinically relevant settings.
+				</div>
+			</div>
+
+			<div class="stat-card">
+				<div class="stat-title">Mechanistic evaluation of inference</div>
+				<div class="stat-desc">
+					Methods are assessed against explicit evolutionary mechanisms, including clonal ancestry, spatial structure, mutational processes, and treatment selection, enabling direct comparison between inferred outputs and true tumour histories.
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
 </section>
 
 <!-- WHATS NEXT? -->
@@ -611,8 +660,8 @@
 
 				<div class="stat-desc">
 					A containerised computing environment providing full reproducibility of the SCOUT analysis pipeline.
-					The Docker image includes all dependencies, tools, and workflow configurations required to regenerate the analyses and figures,
-					ensuring consistent execution across computational environments.
+					The Docker image includes all dependencies, tools, and workflow configurations required to regenerate
+					the analyses and figures, ensuring consistent execution across computational environments.
 				</div>
 
 			</div>
@@ -670,10 +719,10 @@
 							style="height:80px; margin-bottom:10px;" />
 					</a>
 
-					<div class="stat-title">European Nucleotide Archive</div>
+					<!-- <div class="stat-title">European Nucleotide Archive</div> -->
 
 					<div class="stat-desc">
-						Public access to raw sequencing data.
+						Paired-end FASTQ files for each sample and purity level at the maximum simulated coverage are available in <b>ENA</b>.
 					</div>
 
 			</div>
@@ -702,10 +751,10 @@
 							style="height:80px; margin-bottom:10px;" />
 					</a>
 
-					<div class="stat-title">Zenodo</div>
+					<!-- <div class="stat-title">Zenodo</div> -->
 
 					<div class="stat-desc">
-						Processed datasets and reproducibility outputs.
+						Simulated ground truth mutations from ProCESS, somatic SNVs and CNA calls from nf-core/sarek and output files from nf-core/tumourevo are available in Zenodo.
 					</div>
 
 			</div>
