@@ -204,46 +204,6 @@ a {
 	width: 100%;
 }
 
-.nav-item {
-	position: relative;
-	display: inline-block;
-}
-
-.dropdown-content {
-	display: none;
-	position: absolute;
-
-	top: 100%;
-	left: 0;
-
-	background: var(--bg-secondary);
-	border: 1px solid var(--border);
-
-	border-radius: 12px;
-	padding: 0.5rem;
-
-	min-width: 180px;
-
-	box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-	z-index: 1000;
-}
-
-.dropdown-content a {
-	display: block;
-	padding: 0.5rem 0.75rem;
-	text-decoration: none;
-	color: var(--text);
-	border-radius: 8px;
-	white-space: nowrap;
-}
-
-.dropdown-content a:hover {
-	background: rgba(0,0,0,0.06);
-}
-
-.nav-item:hover .dropdown-content {
-	display: block;
-}
 
 /* =========================================================
    THEME TOGGLE
