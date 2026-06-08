@@ -138,7 +138,9 @@
 				</div>
 
 				<div class="stat-desc">
-					Matched tumour-normal WGS samples across all nine purity and coverage combinations.
+					Matched tumour–normal whole-genome sequencing (WGS) samples spanning diverse biological and technical conditions,
+					including multiple tumour types, multiregion and longitudinal sampling, 
+					and systematically varied tumour purity and sequencing depth.
 				</div>
 
 			</div>
@@ -152,7 +154,9 @@
 				</div>
 
 				<div class="stat-desc">
-					Paired end fastq sequencing data.
+					Synthetic paired-end FASTQ datasets generated to emulate Illumina NovaSeq 6000 sequencing,
+					including 150 bp reads, realistic base-calling quality profiles, 
+					and empirically calibrated sequencing error models that reflect modern short-read sequencing platforms.
 				</div>
 
 			</div>
@@ -166,7 +170,8 @@
 				</div>
 
 				<div class="stat-desc">
-					Somatic and germline variant callers, copy number alterations and purity estimates, signature and subclonal deconvolution tools.
+					Systematic benchmarking of somatic and germline variant callers, copy number alteration methods, 
+					tumour purity estimators, and evolutionary inference frameworks for subclonal reconstruction and phylogenetic modelling.
 				</div>
 
 			</div>
@@ -180,7 +185,9 @@
 				</div>
 
 				<div class="stat-desc">
-					Benchmark combinations across varyning sequencing settings.
+					Controlled simulation across a structured grid of tumour purity levels and sequencing depths, 
+					including high-depth whole-genome sequencing (up to 150x) 
+					and progressively lower-purity and lower-coverage conditions reflecting realistic clinical and research scenarios.
 				</div>
 
 			</div>
@@ -247,6 +254,70 @@
 	</div>
 </section>
 
+<!-- WHATS NEXT? -->
+<section class="main-section" id="why-scout">
+	<div class="container">
+
+	<div class="section-header">
+
+		<h2>What’s next?</h2>
+
+		<p>
+			Ongoing developments expanding SCOUT toward single-cell resolution, multi-omic integration,
+			and richer models of tumour evolution and phenotype.
+		</p>
+
+	</div>
+
+	<div class="stats-grid">
+
+		<div class="stat-card">
+
+			<div class="stat-title">
+				Single-cell DNA sequencing benchmarking
+			</div>
+
+			<div class="stat-desc">
+				Extension of benchmarking to single-cell DNA sequencing (scDNA-seq) technologies, 
+				including DLP+-like and scWGS protocols. This will enable evaluation of SNV and 
+				copy-number calling performance, as well as phylogenetic reconstruction accuracy at 
+				single-cell resolution under realistic noise and coverage constraints.
+			</div>
+
+		</div>
+
+		<div class="stat-card">
+
+			<div class="stat-title">
+				Multi-omic tumour evolution modelling
+			</div>
+
+			<div class="stat-desc">
+				Integration of phenotypic evolution with genomic changes through coupled simulation of epigenetic 
+				regulation and transcriptional programs, enabling joint modelling of 
+				genotype–epigenotype–phenotype relationships during tumour progression.
+			</div>
+
+		</div>
+
+		<div class="stat-card">
+
+			<div class="stat-title">
+				Single-cell transcriptomics and chromatin accessibility
+			</div>
+
+			<div class="stat-desc">
+				New simulated experimental layers including single-cell RNA-seq (scRNA-seq) and 
+				single-cell ATAC-seq (scATAC-seq), capturing gene expression dynamics and chromatin
+				accessibility landscapes across evolving tumour subclones.
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+</section>
 <!-- =========================================================
      SOFTWARE
 ========================================================= -->
@@ -280,7 +351,12 @@
 				<div class="stat-title">ProCESS</div>
 
 				<div class="stat-desc">
-					Simulation framework for clonal evolution and Illumina paired-end sequencing.
+					We generated SCOUT using ProCESS (Programmable Cancer Evolution Spatial Simulator), a framework that integrates spatial tumour evolution with 
+					synthetic whole-genome sequencing. Starting from 1000 Genomes germline references, 
+					it models clonal expansion, mutational processes, treatment dynamics, and sequencing noise to preserve 
+					full evolutionary ground truth from origin to FASTQ generation. Using this system, we constructed seven tumour prototypes 
+					spanning solid and haematological cancers under longitudinal, spatial, and treatment-driven scenarios, 
+					capturing key patterns such as polyclonality, clonal sweeps, and resistance evolution.
 				</div>
 
 			</div>
@@ -313,8 +389,11 @@
 				<div class="stat-title">nf-core/sarek</div>
 
 				<div class="stat-desc">
-					Alignment, preprocessing,
-						somatic and copy-number variant calling..
+						We benchmarked tumour–normal whole-genome sequencing workflows using nf-core/sarek, a community-maintained pipeline for somatic and germline variant detection built on GATK. 
+						Across controlled combinations of tumour purity, sequencing depth, and clonal structure, we evaluated the accuracy of SNV, 
+						indel, and copy-number calling under realistic evolutionary scenarios. 
+						This setup enables systematic assessment of how tumour evolutionary complexity propagates 
+						through alignment, preprocessing, and variant inference in standard WGS analysis workflows.
 				</div>
 
 			</div>
@@ -347,7 +426,9 @@
 				<div class="stat-title">nf-core/tumourevo</div>
 
 				<div class="stat-desc">
-					Tumour evolution analysis based on subclonal deconvolution and signature deconvolution.
+					We benchmarked tumour evolution inference using nf-core/tumourevo, a dedicated nf-core pipeline for analysing bulk whole-genome sequencing data. 
+					Across controlled evolutionary scenarios generated in SCOUT, we evaluated the accuracy of driver annotation, mutational signature analysis, and subclonal reconstruction. 
+					This framework enables systematic assessment of how evolutionary history is inferred from bulk sequencing data under varying tumour purity, clonal complexity, and sequencing depth.
 				</div>
 
 			</div>
@@ -386,8 +467,10 @@
 				<div class="stat-title">SCOUT Package</div>
 
 				<div class="stat-desc">
-					Reproducible software package
-						and analysis toolkit.
+					An R package providing streamlined access to SCOUT datasets generated via ProCESS. 
+					It enables efficient download and querying of processed sequencing data, along with convenient functions 
+					to access associated evolutionary ground truth and benchmarking results.
+					The package supports reproducible downstream analyses and integration into cancer genomics workflows.
 				</div>
 
 			</div>
@@ -402,7 +485,9 @@
 				<div class="stat-title">Reproducibility Repository</div>
 
 				<div class="stat-desc">
-					Source code, workflows and benchmarking scripts.
+					A public GitHub repository containing all scripts required to reproduce the analyses presented in the SCOUT study,
+					including data processing workflows, benchmarking procedures, and figure generation. 
+</div>
 				</div>
 
 			</div>
@@ -427,7 +512,9 @@
 				<div class="stat-title">ProCESS Container</div>
 
 				<div class="stat-desc">
-					Containerised reproducible environments.
+					A containerised computing environment providing full reproducibility of the SCOUT analysis pipeline.
+					The Docker image includes all dependencies, tools, and workflow configurations required to regenerate the analyses and figures,
+					ensuring consistent execution across computational environments.
 				</div>
 
 			</div>
@@ -624,7 +711,7 @@ Casagrande and Giulio Caravagna},
             </p>
 
             <p class="journal">
-                Journal Name (2026)
+                biorxiv Preprint
             </p>
 
             <div class="publication-actions">
@@ -658,7 +745,7 @@ Casagrande and Giulio Caravagna},
             </p>
 
             <p class="journal">
-                Bioinformatics (2026)
+                biorxiv Preprint
             </p>
 
             <div class="publication-actions">
