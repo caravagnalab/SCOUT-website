@@ -140,9 +140,8 @@
 				</div>
 
 				<div class="stat-desc">
-					Matched tumour–normal whole-genome sequencing (WGS) samples spanning diverse biological and technical conditions,
-					including multiple tumour types, <b>multiregion</b> and <b>longitudinal</b> sampling, 
-					and systematically varied tumour purity and sequencing depth.
+					Matched tumour–normal whole-genome sequencing (WGS) datasets encompassing multiple tumour types, <b>multiregion</b> and <b>longitudinal</b> sampling, 
+					and <b>pre-</b> and <b>post-</b>treatment conditions.
 				</div>
 
 			</div>
@@ -170,9 +169,7 @@
 				</div>
 
 				<div class="stat-desc">
-					Synthetic paired-end FASTQ datasets generated to emulate <b>Illumina NovaSeq 6000</b> sequencing,
-					including <b>150 bp</b> reads, realistic base-calling quality profiles, 
-					and empirically calibrated sequencing error models that reflect modern short-read sequencing platforms.
+					Synthetic 150 bp paired-end FASTQ reads simulating <b>Illumina</b> NovaSeq 6000 sequencing, with realistic base-calling quality profiles.
 				</div>
 
 			</div>
@@ -201,9 +198,9 @@
 				</div>
 
 				<div class="stat-desc">
-					Controlled simulation across a structured grid of tumour purity levels and sequencing depths, 
-					including high-depth whole-genome sequencing (up to 150x) 
-					and progressively lower-purity and lower-coverage conditions reflecting realistic clinical and research scenarios.
+					Simulated tumour–normal datasets across tumour purities of <b>0.3</b>, <b>0.6</b>, and <b>0.9</b> and 
+					sequencing depths of <b>50×</b>, <b>100×</b>, and <b>150×</b>, 
+					reflecting common WGS conditions encountered in cancer research.
 				</div>
 
 			</div>
@@ -237,7 +234,7 @@
 				</div>
 
 				<div class="stat-desc">
-					Simulations are grounded in real human genetic diversity using germline haplotypes derived from the 1000 Genomes Project, ensuring realistic population-level background variation in all tumour–normal samples.
+					Simulations are grounded in real human genetic diversity using germline haplotypes derived from the <b>1000 Genomes Project</b>, ensuring realistic population-level background variation in all tumour–normal samples.
 				</div>
 
 			</div>
@@ -249,7 +246,7 @@
 				</div>
 
 				<div class="stat-desc">
-					Tumour-specific driver alterations are informed by the Cancer Gene Census, enabling realistic oncogenic architectures that reflect known cancer pathways and disease-specific mutational landscapes.
+					Tumour-specific driver alterations are informed by the <b>Cancer Gene Census</b>, enabling realistic oncogenic architectures that reflect known cancer pathways and disease-specific mutational landscapes.
 				</div>
 
 			</div>
@@ -261,7 +258,7 @@
 				</div>
 
 				<div class="stat-desc">
-					Mutational processes are modelled using COSMIC signatures, capturing context-dependent substitution patterns and indel formation mechanisms that reproduce tumour-type-specific mutational spectra.
+					Mutational processes are modelled using <b>COSMIC</b> signatures, capturing context-dependent substitution patterns and indel formation mechanisms that reproduce tumour-type-specific and treatment-related mutational spectra.
 				</div>
 
 			</div>
@@ -273,7 +270,7 @@
 				</div>
 
 				<div class="stat-desc">
-					Copy-number alterations are derived from PCAWG and Hartwig datasets, reproducing realistic patterns of aneuploidy, focal amplifications, and deletions across diverse cancer types.
+					Copy-number alterations are derived from <b>PCAWG</b> and <b>Hartwig</b> datasets, reproducing realistic patterns of aneuploidy, focal amplifications, and deletions across diverse cancer types.
 				</div>
 
 			</div>
@@ -383,12 +380,12 @@
 				</div>
 			</div>
 
-			<div class="stat-card">
+			<!-- <div class="stat-card">
 				<div class="stat-title">Clinical realism in WGS analysis</div>
 				<div class="stat-desc">
 					The framework reproduces realistic whole-genome sequencing conditions, including variable purity, sequencing depth, and tumour heterogeneity, supporting robust evaluation of cancer genomics methods in clinically relevant settings.
 				</div>
-			</div>
+			</div> -->
 
 			<div class="stat-card">
 				<div class="stat-title">Mechanistic evaluation of inference</div>
@@ -427,9 +424,8 @@
 			</div>
 
 			<div class="stat-desc">
-				Extension of benchmarking to single-cell DNA sequencing (scDNA-seq) technologies, 
-				including DLP+-like and scWGS protocols. This will enable evaluation of SNV and 
-				copy-number calling performance, as well as phylogenetic reconstruction accuracy at 
+				Extension of benchmarking to single-cell DNA sequencing technologies This will enable evaluation of SNV and 
+				copy-number calling performance, as well as <b>phylogenetic reconstruction</b> accuracy at 
 				single-cell resolution under realistic noise and coverage constraints.
 			</div>
 
@@ -444,7 +440,7 @@
 			<div class="stat-desc">
 				Integration of phenotypic evolution with genomic changes through coupled simulation of epigenetic 
 				regulation and transcriptional programs, enabling joint modelling of 
-				genotype–phenotype interplay during tumour progression.
+				<b>genotype–phenotype</b> interplay during tumour progression.
 			</div>
 
 		</div>
@@ -456,8 +452,8 @@
 			</div>
 
 			<div class="stat-desc">
-				New simulated experimental layers including single-cell RNA-seq and 
-				single-cell ATAC-seq, capturing gene expression dynamics and chromatin
+				New simulated experimental layers including <b>single-cell RNA-seq</b> and 
+				<b>single-cell ATAC-seq</b>, capturing gene expression dynamics and chromatin
 				accessibility landscapes across evolving tumour subclones.
 			</div>
 
@@ -501,8 +497,8 @@
 
 				<div class="stat-desc">
 					We generated SCOUT using ProCESS (Programmable Cancer Evolution Spatial Simulator), a framework that integrates spatial tumour evolution with synthetic whole-genome sequencing.
-					Within this framework,we constructed seven tumour prototypes in SCOUT, designed to reflect the characteristic evolutionary trajectories and
-					biological heterogeneity of their corresponding cancer types. 
+					<!-- Within this framework,we constructed seven tumour prototypes in SCOUT, designed to reflect the characteristic evolutionary trajectories and
+					biological heterogeneity of their corresponding cancer types.  -->
 				</div>
 
 			</div>
@@ -570,8 +566,8 @@
 				<div class="stat-title">nf-core/tumourevo</div>
 
 				<div class="stat-desc">
-					We benchmarked tumour evolution inference methods using nf-core/tumourevo, focusing on driver mutation detection, subclonal deconvolution in both single-sample and 
-					multi-sample settings, and mutational signature analysis. Across ProCESS-generated ground-truth evolutionary scenarios, 
+					We benchmarked tumour evolution inference methods using nf-core/tumourevo, focusing on <b>driver mutation</b> detection, <b>subclonal deconvolution</b> in both single-sample and 
+					multi-sample settings, and <b>mutational signatures</b> analysis. Across ProCESS-generated ground-truth evolutionary scenarios, 
 					we evaluated the accuracy of reconstructed clonal architectures and mutational processes, providing a comprehensive assessment 
 					of downstream genomic interpretation of tumour evolution.
 				</div>
@@ -615,7 +611,7 @@
 					An R package providing streamlined access to SCOUT datasets generated via ProCESS. 
 					It enables efficient download and querying of processed sequencing data, along with convenient functions 
 					to access associated evolutionary ground truth and benchmarking results.
-					The package supports reproducible downstream analyses and integration into cancer genomics workflows.
+					<!-- The package supports reproducible downstream analyses and integration into cancer genomics workflows. -->
 				</div>
 
 			</div>
@@ -658,7 +654,8 @@
 				<div class="stat-desc">
 					A containerised computing environment providing full reproducibility of the SCOUT analysis pipeline.
 					The Docker image includes all dependencies, tools, and workflow configurations required to regenerate
-					the analyses and figures, ensuring consistent execution across computational environments.
+					the analyses and figures.
+					<!-- , ensuring consistent execution across computational environments. -->
 				</div>
 
 			</div>
@@ -889,13 +886,16 @@ Casagrande and Giulio Caravagna},
             </p>
 
             <p class="journal">
-                biorxiv Preprint
+                biorxiv Preprint (In progress)
             </p>
-
-            <div class="publication-actions">
+			<div class="publication-actions">
+				<a class="btn btn-primary disabled" aria-disabled="true" tabindex="-1">Read Paper (coming soon)</a>
+				<a class="btn btn-secondary disabled" aria-disabled="true" tabindex="-1">DOI (not available)</a>
+			</div>
+            <!-- <div class="publication-actions">
                 <a href="#" class="btn btn-primary">Read Paper</a>
                 <a href="#" class="btn btn-secondary">DOI</a>
-            </div>
+            </div> -->
 
         </article>
 
