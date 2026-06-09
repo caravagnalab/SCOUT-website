@@ -44,7 +44,7 @@
 
 			<a href="#data">Data</a>
 
-			<a href="#publication">Publication</a>
+			<a href="#publication">Publications</a>
 
 			<button class="theme-toggle"
 					id="theme-toggle">
@@ -198,8 +198,8 @@
 				</div>
 
 				<div class="stat-desc">
-					Simulated tumour–normal datasets across tumour purities of <b>0.3</b>, <b>0.6</b>, and <b>0.9</b> and 
-					sequencing depths of <b>50×</b>, <b>100×</b>, and <b>150×</b>, 
+					Simulated tumour–normal datasets across different tumour purities (<b>0.3</b>, <b>0.6</b>, and <b>0.9</b>) and 
+					sequencing depths (<b>50x</b>, <b>100x</b>, and <b>150x</b>), 
 					reflecting common WGS conditions encountered in cancer research.
 				</div>
 
@@ -234,7 +234,7 @@
 				</div>
 
 				<div class="stat-desc">
-					Simulations are grounded in real human genetic diversity using germline haplotypes derived from the <b>1000 Genomes Project</b>, ensuring realistic population-level background variation in all tumour–normal samples.
+					Simulations are grounded in real human genetic diversity using germline polymorphisms derived from the <b>1000 Genomes Project</b>, ensuring realistic population-level background variation in all tumour–normal samples.
 				</div>
 
 			</div>
@@ -258,7 +258,7 @@
 				</div>
 
 				<div class="stat-desc">
-					Mutational processes are modelled using <b>COSMIC</b> signatures, capturing context-dependent substitution patterns and indel formation mechanisms that reproduce tumour-type-specific and treatment-related mutational spectra.
+					Mutational processes are modelled using <b>COSMIC signatures</b>, capturing context-dependent substitution patterns and indel formation mechanisms that reproduce tumour-type-specific and treatment-related mutational spectra.
 				</div>
 
 			</div>
@@ -531,9 +531,11 @@
 				<div class="stat-title">nf-core/sarek</div>
 
 				<div class="stat-desc">
-						We benchmarked somatic and germline variant calling, as well as copy-number detection methods, for tumour–normal whole-genome sequencing using nf-core/sarek.
+						We benchmarked <b>somatic</b> and <b>germline</b> variant calling and <b>copy-number</b> detection in tumour–normal WGS using nf-core/sarek, 
+						evaluating performance across tumour purity, sequencing depth, and genomic profiles against ProCESS-derived ground truth.
+						<!-- We benchmarked somatic and germline variant calling, as well as copy-number detection methods, for tumour–normal whole-genome sequencing using nf-core/sarek.
 						Across controlled combinations of tumour purity, sequencing depth, and genomic profiles, we evaluated the accuracy of SNV and indel detection, 
-						copy-number segmentation, and ploidy inference, alongside tumour purity estimation, using ProCESS-derived ground-truth genomic profiles.
+						copy-number segmentation, and ploidy inference, alongside tumour purity estimation, using ProCESS-derived ground-truth genomic profiles. -->
 				</div>
 
 			</div>
@@ -566,10 +568,15 @@
 				<div class="stat-title">nf-core/tumourevo</div>
 
 				<div class="stat-desc">
-					We benchmarked tumour evolution inference methods using nf-core/tumourevo, focusing on <b>driver mutation</b> detection, <b>subclonal deconvolution</b> in both single-sample and 
+					We benchmarked tumour evolution inference methods using nf-core/tumourevo, 
+					evaluating <b>driver</b> mutation detection, <b>subclonal</b> deconvolution, 
+					and <b>mutational signatures</b> analysis. Using ProCESS-generated ground-truth evolutionary scenarios, 
+					we assessed the accuracy of reconstructed clonal architectures and mutational processes.
+
+					<!-- We benchmarked tumour evolution inference methods using nf-core/tumourevo, focusing on <b>driver mutation</b> detection, <b>subclonal deconvolution</b> in both single-sample and 
 					multi-sample settings, and <b>mutational signatures</b> analysis. Across ProCESS-generated ground-truth evolutionary scenarios, 
 					we evaluated the accuracy of reconstructed clonal architectures and mutational processes, providing a comprehensive assessment 
-					of downstream genomic interpretation of tumour evolution.
+					of downstream genomic interpretation of tumour evolution. -->
 				</div>
 
 			</div>
@@ -819,7 +826,7 @@ Casagrande and Giulio Caravagna},
 <div class="container">
 
     <div class="section-header">
-        <h2>Publication</h2>
+        <h2>Publications</h2>
         <p>
             Research articles and resources associated with the SCOUT project.
         </p>
